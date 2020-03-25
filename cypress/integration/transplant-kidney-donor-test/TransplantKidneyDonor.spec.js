@@ -10,7 +10,7 @@ describe("transplan kidney donor page test", () => {
   });
 
   it("should check the Landing page elements", () => {
-    var text = "Welcome to the BREEZE TRANSPLANT online health";
+    var welcomeText = "Welcome to the BREEZE TRANSPLANT online health";
     var firstName = "First name";
     var middleName = "Middle name";
     var lastName = "Last name";
@@ -25,7 +25,7 @@ describe("transplan kidney donor page test", () => {
       .should("be.visible")
       .get(landingPage.dialogText)
       .then(el => {
-        assert.include(el.text(), text);
+        assert.include(el.text(), welcomeText);
       });
     cy.get(landingPage.termsLink)
       .should("be.visible")
