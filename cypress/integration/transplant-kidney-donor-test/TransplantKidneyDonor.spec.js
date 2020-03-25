@@ -91,6 +91,12 @@ describe("transplan kidney donor page test", () => {
       .type('test@test.com')
       .get(landingPage.nextBtn)
       .click()
-      //need to add verification 
+    cy.contains('Donor Type').should('be.visible')
+      .get(landingPage.iKnowRecipientRadioBtn)
+      .should('be.visible')
+      .get(landingPage.iDontKnowRecipientRadioBtn)
+      .should('be.visible')
+      .get(landingPage.nextBtn)
+      .should('be.visible')
   });
 });

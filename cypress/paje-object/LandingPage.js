@@ -22,7 +22,6 @@ module.exports = {
     primaryPhoneFiled: 'input[id="phone-number"]',
     yourPhoneNumberTypeSelect: 'select[id="selectID"]',
     yourEmailAddressFiled: 'input[id="txtEmail"]',
-
-
-
+    iKnowRecipientRadioBtn: 'label[for="donortype.namedrecip"]',
+    iDontKnowRecipientRadioBtn: 'label[for="donortype.altruist"]',
 }
