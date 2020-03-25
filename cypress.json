@@ -1,1 +1,5 @@
-{}
+{
+    "baseUrl": "https://mobile-survey.patientfollowup.org.arcgmrqa.i.mymedsleuth.com/transplant-kidney/donor-prereq-1/dialogs",
+    "chromeWebSecurity": false,
+    "defaultCommandTimeout": 15000
+  }
