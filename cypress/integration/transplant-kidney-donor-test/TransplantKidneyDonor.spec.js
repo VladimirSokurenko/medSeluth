@@ -1,5 +1,6 @@
 import landingPage from "../../paje-object/LandingPage";
 import demographicsPage from "../../paje-object/DemographicsPage";
+import referalPage from "../../paje-object/ReferalPage";
 
 describe("transplan kidney donor page test", () => {
   before(() => {
@@ -169,5 +170,58 @@ describe("transplan kidney donor page test", () => {
       .get(landingPage.validationErrorMsg)
       .first()
       .should("have.text", "Required");
+  });
+
+  it("should check the Referral page elements", () => {
+    var textNextBtn = "Next";
+    var transplantCandidateText = "From the transplant candidate";
+    var familyMemberFriendText = "From someone I know on behalf of the transplant candidate (a family member or friend)";
+    var socialMediaText = "From social media (such as Facebook)";
+    var myOwnResearchText = "From my own research";
+    var anotherDonorText = "From another donor, recipient or patient.";
+    var otherTextQuestion = "Other";
+    cy.visit("/referral.0")
+      .get(landingPage.startSurveyBtn)
+      .click()
+      .get(landingPage.nextBtn)
+      .then(el => {
+        assert.include(el.text(), textNextBtn);
+      });
+    cy.get(referalPage.transplantCandidateRadioBtn)
+      .should("be.visible")
+      .get(referalPage.transplantCandidateTextBlock)
+      .should("have.text", transplantCandidateText)
+      .get(referalPage.candidatesSomeoneRadioBtn)
+      .should("be.visible")
+      .get(referalPage.candidatesSomeoneTextBlock)
+      .should("have.text", familyMemberFriendText)
+      .get(referalPage.socialMediaRadioBtn)
+      .should("be.visible")
+      .get(referalPage.socialMediaTextBlock)
+      .should('have.text', socialMediaText)
+      .get(referalPage.myOwnResearchRadioBtn)
+      .should("be.visible")
+      .get(referalPage.myOwnResearchTextBlock)
+      .should('have.text', myOwnResearchText)
+      .get(referalPage.anotherPatientRadioBtn)
+      .should("be.visible")
+      .get(referalPage.anotherPatientTextBlock)
+      .should('have.text', anotherDonorText)
+      .get(referalPage.otherRadioBtn)
+      .should("be.visible")
+      .get(referalPage.otherTextBlock)
+      .should('have.text', otherTextQuestion)
+      .get(landingPage.nextBtn)
+      .should("be.visible")
+      .get(landingPage.nextBtn)
+      .click()
+      .get(referalPage.validationErrorMsg)
+      .first()
+      .should("have.text", "Required")
+      .get(referalPage.myOwnResearchRadioBtn)
+      .check()
+      .get(landingPage.nextBtn)
+      .click();
+    cy.contains("Demographics").should("be.visible");
   });
 });
